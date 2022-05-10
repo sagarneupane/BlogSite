@@ -1,0 +1,68 @@
+
+
+
+
+
+
+{% extends 'base/base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="container bg-lightgreen mt-1 ">
+        <div class="row ">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="bg-dark">
+                <h2 class="text-{{message.tags}} text-center">{{message}} </h2>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <div class="offset-sm-3 col-sm-6 bg-formcolor p-1 mt-2 text-center">
+                <h1>Hello {{user.username}}</h1>
+
+                </div>
+            <div class=" offset-sm-2 col-sm-8 mt-2 mb-3 p-4 text-center">
+
+                <a href="{% url 'addpost' %}" class="btn btn-info">Create New Blog</a>
+                <h2 class="bg-formcolor p-2 mt-4">Blogs Information</h2>
+            </div>
+            <div class="offset-sm-1 col-sm-10 bg-form-color mt-2 bg-whitegreen mb-2">
+
+                <table class="table table-hover ">
+
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+
+                    </thead>
+                    {% if blogs %}
+                    {% for blog in blogs %}
+                    <tr>
+                        <td>{{blog.id}}</td>
+                        <td>{{blog.Title}}</td>
+                        <td>{{blog.Description}}</td>
+                        <td><a href="{% url 'editpost' blog.id %}" class="btn btn-warning">Edit</a></td>
+                        <td><a href="{% url 'deletepost' blog.id %}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="5">No Blogs Present</td>
+                    </tr>
+                    {% endif %}
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+</div>
+{% endblock %}
