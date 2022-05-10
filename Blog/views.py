@@ -3,7 +3,7 @@ from .forms import DummyForm, CreateUser, LogUser, BlogForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import Blog
-
+from django.contrib.auth.models import Group
 
 # Create your views here.
 def home(request):
@@ -26,7 +26,9 @@ def signup(request):
     if request.method == 'POST':
         fm = CreateUser(request.POST)
         if fm.is_valid():
-            fm.save()
+            user = fm.save()
+            group = Group.objects.get(name="Blogger")
+            user.groups.add(group)
             messages.success(request, "User Created Successfully")
             return redirect("signup")
         else:
@@ -63,9 +65,12 @@ def signout(request):
 
 def dashboard(request):
     if request.user.is_authenticated:
+        user = request.user
+        full_name = user.get_full_name()
+        gps = user.groups.all()
         blogs = Blog.objects.all()
-        context = {"blogs": blogs}
-        print(request.user.user_permissions)
+        context = {"blogs": blogs,"fullname":full_name,"gps":gps}
+        # print(request.user.user_permissions)
         return render(request, 'dashboard.html', context)
     else:
         return redirect('signin')

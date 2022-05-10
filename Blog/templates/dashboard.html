@@ -19,8 +19,17 @@
             {% endfor %}
             {% endif %}
             <div class="offset-sm-3 col-sm-6 bg-formcolor p-1 mt-2 text-center">
-                <h1>Hello {{user.username}}</h1>
+                {% for groups in gps %}
 
+                <figure>
+                      <blockquote class="blockquote text-capitalize">
+                        <h3 class="display-2">{{fullname}}</h3>
+                      </blockquote>
+                      <figcaption class="blockquote-footer">
+                        <cite title="Source Title" class="display-4">{{groups.name}}</cite>
+                      </figcaption>
+                </figure>
+                {% endfor %}
                 </div>
             <div class=" offset-sm-2 col-sm-8 mt-2 mb-3 p-4 text-center">
 
@@ -46,8 +55,13 @@
                         <td>{{blog.id}}</td>
                         <td>{{blog.Title}}</td>
                         <td>{{blog.Description}}</td>
+
+                        {% if perms.Blog.change_blog %}
                         <td><a href="{% url 'editpost' blog.id %}" class="btn btn-warning">Edit</a></td>
+                        {% endif %}
+                        {% if perms.Blog.delete_blog %}
                         <td><a href="{% url 'deletepost' blog.id %}" class="btn btn-danger">Delete</a></td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                     {% else %}
