@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+    {% include "base/link.html" %}
+</head>
+<body>
+<div class="container-fluid">
+    {% include 'base/navbar.html' %}
+    {% block content %}
+    {% block content %}
+</div>
+</body>
+</html>
