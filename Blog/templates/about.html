@@ -1,0 +1,69 @@
+
+
+
+
+{% extends 'base/base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="container bg-lightgreen mt-1 ">
+        <div class="row ">
+            <div class="offset-sm-1 col-sm-4 mt-3 mb-3">
+                    <div class="row bg-aboutcolor text-light p-4 m-1">
+                        <div class="col-sm-4">
+                            {% load static %}
+                            <img src="{% static 'img/abi1.jpg' %}" alt="" class="img-fluid rounded-circle" height="100px" width="100px" >
+                        </div>
+                        <div class="col-sm-6">
+                            <h2>Who We Are?</h2>
+                            <p>We are the team</p>
+                        </div>
+                    </div>
+            </div>
+             <div class="offset-sm-1 col-sm-4 mt-3 mb-3">
+                    <div class="row bg-aboutcolor text-light p-2 m-1">
+                        <div class="col-sm-4 text-center mt-5">
+                           <i class="fa-solid fa-location-dot fa-5x"></i>
+                        </div>
+                        <div class="col-sm-6">
+                            <h2>Address</h2>
+                            <p>Lumbini Province</p>
+                            <p>Kohalpur,Banke</p>
+                            <h3>Nepal</h3>
+                        </div>
+                    </div>
+            </div>
+             <div class="offset-sm-2 col-sm-8 mt-3 mb-3">
+                    <h1 class="text-center">What do we offer?</h1>
+                    <div class="row">
+                        <div class="col-sm-5 text-center p-4 bg-info">
+                            <i class="fa-solid fa-globe fa-5x"></i>
+                            <h3>Web Development</h3>
+                            <p>We are offering website development using python web framework Django.</p>
+                        </div>
+                        <div class="offset-sm-2 col-sm-5 text-center p-4 bg-info">
+                            <i class="fa-brands fa-aws fa-5x"></i>
+                            <h3>Web Development</h3>
+                            <p>We are offering website development using python web framework Django.</p>
+                        </div>
+                        <div class="mt-5 col-sm-5 text-center p-4 bg-info">
+                            <i class="fa-brands fa-java fa-5x"></i>
+                            <h3>Java Developer</h3>
+                            <p>We are offering website development using python web framework Django.</p>
+                        </div>
+                        <div class="mt-5 offset-sm-2 col-sm-5 text-center p-4 bg-info">
+                            <i class="fa-brands fa-python fa-5x"></i>
+                            <h3>Python Development</h3>
+                            <p>We are offering website development using python web framework Django.</p>
+                        </div>
+                    </div>
+            </div>
+
+
+        </div>
+
+
+
+</div>
+{% endblock %}

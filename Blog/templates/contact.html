@@ -1,0 +1,33 @@
+
+
+
+{% extends 'base/base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="container bg-lightgreen mt-1 ">
+        <div class="row ">
+            <div class="offset-sm-3 col-sm-6 bg-formcolor p-1">
+
+
+            <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="col-sm-11 p-2 mt-2 mb-1">
+                {{field.label_tag }}{{field}} <span class="error-class">{{field.errors| striptags}}</span>
+            </div>
+            {% endfor %}
+
+        </form>
+                <div class="col-sm-11 p-2 mt-2 mb-1">
+                    <input type="submit" value="Send Message" class="btn btn-success">
+            </div>
+                </div>
+
+        </div>
+
+
+
+</div>
+{% endblock %}
